@@ -24,4 +24,8 @@ const deserializeRepositories = (repositories) => {
     return deserializedRepos;
 };
 
-
+export const getUserRepoLanguages = (username) => {
+    return getUserRepositories(username).then((repositories) => {
+        return deserializeRepositories(repositories);
+    });
+};
