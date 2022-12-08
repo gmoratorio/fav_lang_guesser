@@ -20,7 +20,7 @@ const spanish = {
     },
     results: {
         title: 'El idioma preferido de este usuario es: ',
-        error: 'Tuvimos un error encontrando la idioma preferida. Por favor verifique el nombre de usuario y intente de nuevo.'
+        error: 'Tuvimos un error encontrando la idioma preferida. Por favor verifique el nombre del usuario y intente de nuevo.'
     }
 };
 
