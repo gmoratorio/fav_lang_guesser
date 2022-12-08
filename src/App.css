@@ -11,6 +11,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 70vw
+}
+
+.topOptionsContainer{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: flex-end;
 }
 
 .headerContainer {

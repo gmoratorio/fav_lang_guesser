@@ -24,4 +24,13 @@ const spanish = {
     }
 };
 
-export {english, spanish};
+export const availableLanguages = [
+    {name: 'english', displayName: 'English 🇬🇧'},
+    {name: 'spanish', displayName: 'Español 🇪🇸'}
+];
+
+export const getDefaultLocaleName = () => {
+    return availableLanguages[0].name;
+};
+
+export default {english, spanish};

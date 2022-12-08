@@ -1,12 +1,13 @@
 import {TextField} from '@mui/material';
 
-import {translate} from '../helpers/localeHelper';
-import {DEFAULT_USERNAME} from '../constants';
+import {useLocaleContextActions} from '../context/LocaleContext';
 
 export default function UsernameInputField({
     defaultUsername,
     onChangeCallback
 }) {
+    const {translate} = useLocaleContextActions();
+
     return (
         <div>
             <TextField

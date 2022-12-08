@@ -1,14 +1,6 @@
 import {isString, isArray} from 'lodash';
 
-import {english, spanish} from '../locales';
-
-export const translate = (locale = '') => {
-    // this localeObject easily be made dynamic by passing a localeObject arg
-    // for this exercise it's deliberately hordcoded
-    // to switch app to spanish, uncomment line below
-    // const localeObject = spanish;
-    const localeObject = english;
-
+export const translate = (localeObject, locale = '') => {
     let defaultText = locale;
     let textToDisplay = defaultText;
 
