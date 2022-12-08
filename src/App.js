@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react';
 import './App.css';
 
+import {getUserRepositories} from './services/githubService';
 import {translate} from './helpers/localeHelper';
 import UsernameInputField from './components/UsernameInputField';
 import {DEFAULT_USERNAME} from './constants';
@@ -25,7 +26,9 @@ function App() {
     const onSubmitUsername = (e) => {
         e.preventDefault();
 
-        console.log(`Username to submit is: ${username}`);
+        getUserRepositories(username).then((repositories) => {
+            console.log(repositories);
+        });
     };
 
     const renderResultsIfNecessary = () => {
