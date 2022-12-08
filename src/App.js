@@ -1,21 +1,15 @@
 import {useState, useEffect} from 'react';
 import './App.css';
 
-import {getUserRepositories} from './services/githubService';
+import {getUserRepoLanguages} from './services/githubService';
 import {translate} from './helpers/localeHelper';
 import UsernameInputField from './components/UsernameInputField';
 import {DEFAULT_USERNAME} from './constants';
+import {getPreferredLanguage, groupReposByLanguage} from './helpers/repoHelper';
 
 function App() {
-    const [hasResults, setHasResults] = useState(false);
+    const [favoriteLanguage, setFavoriteLanguage] = useState(null);
     const [username, setUsername] = useState(DEFAULT_USERNAME);
-
-    useEffect(() => {
-        // TODO - replace this with real fetch
-        setTimeout(() => {
-            setHasResults(true);
-        }, 2000);
-    }, []);
 
     const onChangeInput = (e) => {
         const newUsername = e.target.value;
@@ -26,18 +20,21 @@ function App() {
     const onSubmitUsername = (e) => {
         e.preventDefault();
 
-        getUserRepositories(username).then((repositories) => {
-            console.log(repositories);
+        getUserRepoLanguages(username).then((repositories) => {
+            const groupedLanguages = groupReposByLanguage(repositories);
+            const {name, repoCount} = getPreferredLanguage(groupedLanguages);
+
+            setFavoriteLanguage(name);
         });
     };
 
     const renderResultsIfNecessary = () => {
         let results = null;
 
-        if (hasResults) {
+        if (!!favoriteLanguage) {
             results = (
                 <div className="resultsContainer">
-                    {translate('results.title')}
+                    {`${translate('results.title')} ${favoriteLanguage}`}
                 </div>
             );
         }
