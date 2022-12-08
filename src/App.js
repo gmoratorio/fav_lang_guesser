@@ -34,6 +34,8 @@ function App() {
         getUserRepoLanguages(username)
             .then((repositories) => {
                 if (repositories.length) {
+                    // note that these helpers below are agnostic of which remote repository service is used
+                    // as long as the repos are deserialized in the same shape
                     const groupedLanguages = groupReposByLanguage(repositories);
                     const {name, repoCount} =
                         getPreferredLanguage(groupedLanguages);
