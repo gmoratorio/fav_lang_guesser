@@ -3,7 +3,7 @@ const english = {
         title: 'Favorite Language Guessing Game!'
     },
     input: {
-        label: 'Enter username'
+        label: 'Enter username, then press Enter'
     },
     results: {
         title: "This user's favorite language is: ",
@@ -16,7 +16,7 @@ const spanish = {
         title: 'Adivinamos El Idioma Preferido!'
     },
     input: {
-        label: 'Nombre de usuario'
+        label: 'Ingrese el nombre de usuario, y después presiona enter'
     },
     results: {
         title: 'El idioma preferido de este usuario es: ',
