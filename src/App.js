@@ -7,9 +7,14 @@ import UsernameInputField from './components/UsernameInputField';
 import {DEFAULT_USERNAME} from './constants';
 import {getPreferredLanguage, groupReposByLanguage} from './helpers/repoHelper';
 
+const INITIAL_FAV_LANGUAGE = null;
+const INITIAL_USERNAME = DEFAULT_USERNAME;
+const INITIAL_HAS_ERROR = false;
+
 function App() {
     const [favoriteLanguage, setFavoriteLanguage] = useState(null);
-    const [username, setUsername] = useState(DEFAULT_USERNAME);
+    const [username, setUsername] = useState(INITIAL_USERNAME);
+    const [hasError, setHasError] = useState(false);
 
     const onChangeInput = (e) => {
         const newUsername = e.target.value;
@@ -17,15 +22,30 @@ function App() {
         setUsername(newUsername);
     };
 
+    const resetResults = () => {
+        setFavoriteLanguage(INITIAL_FAV_LANGUAGE);
+        setHasError(INITIAL_HAS_ERROR);
+    };
+
     const onSubmitUsername = (e) => {
         e.preventDefault();
+        resetResults();
 
-        getUserRepoLanguages(username).then((repositories) => {
-            const groupedLanguages = groupReposByLanguage(repositories);
-            const {name, repoCount} = getPreferredLanguage(groupedLanguages);
+        getUserRepoLanguages(username)
+            .then((repositories) => {
+                if (repositories.length) {
+                    const groupedLanguages = groupReposByLanguage(repositories);
+                    const {name, repoCount} =
+                        getPreferredLanguage(groupedLanguages);
 
-            setFavoriteLanguage(name);
-        });
+                    setFavoriteLanguage(name);
+                } else {
+                    setHasError(true);
+                }
+            })
+            .catch((error) => {
+                setHasError(true);
+            });
     };
 
     const renderResultsIfNecessary = () => {
@@ -40,6 +60,16 @@ function App() {
         }
 
         return results;
+    };
+
+    const renderErrorIfNecessary = () => {
+        if (hasError) {
+            return (
+                <div className="errorContainer">
+                    {translate('results.error')}
+                </div>
+            );
+        }
     };
 
     return (
@@ -57,6 +87,7 @@ function App() {
                 </form>
 
                 {renderResultsIfNecessary()}
+                {renderErrorIfNecessary()}
             </div>
         </div>
     );

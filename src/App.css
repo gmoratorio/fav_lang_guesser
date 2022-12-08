@@ -25,3 +25,8 @@
 .resultsContainer {
     font-size: 2rem;
 }
+
+.errorContainer {
+    font-size: 1rem;
+    color: red;
+}

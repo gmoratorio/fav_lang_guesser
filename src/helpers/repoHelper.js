@@ -1,7 +1,13 @@
 import {groupBy, reduce} from 'lodash';
 
 export const groupReposByLanguage = (repositories) => {
-    return groupBy(repositories, (repo) => repo.language);
+    const groupedLanguages = groupBy(repositories, (repo) => repo.language);
+
+    if (groupedLanguages.null) {
+        delete groupedLanguages.null;
+    }
+
+    return groupedLanguages;
 };
 
 export const getPreferredLanguage = (languagesObject) => {

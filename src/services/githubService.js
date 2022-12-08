@@ -1,11 +1,10 @@
+import {isArray} from 'lodash';
+
 export const getUserRepositories = (username = '') => {
     return fetch(`https://api.github.com/users/${username}/repos`)
         .then((response) => response.json())
         .then((response) => {
             return response;
-        })
-        .catch((error) => {
-            console.log(error);
         });
 };
 
@@ -26,6 +25,12 @@ const deserializeRepositories = (repositories) => {
 
 export const getUserRepoLanguages = (username) => {
     return getUserRepositories(username).then((repositories) => {
-        return deserializeRepositories(repositories);
+        let deserializedRepositories = [];
+
+        if (isArray(repositories)) {
+            deserializedRepositories = deserializeRepositories(repositories);
+        }
+
+        return deserializedRepositories;
     });
 };

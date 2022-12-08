@@ -6,7 +6,8 @@ const english = {
         label: 'Enter username'
     },
     results: {
-        title: "This user's favorite language is: "
+        title: "This user's favorite language is: ",
+        error: 'There was an error fetching favorite language, please check the username and try again.'
     }
 };
 
@@ -18,7 +19,8 @@ const spanish = {
         label: 'Nombre de usuario'
     },
     results: {
-        title: 'El idioma preferido de este usuario es: '
+        title: 'El idioma preferido de este usuario es: ',
+        error: 'Tuvimos un error encontrando la idioma preferida. Por favor verifique el nombre de usuario y intente de nuevo.'
     }
 };
 
