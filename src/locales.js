@@ -32,7 +32,7 @@ const pirate = {
         label: "Enter the Pirate's codin' name from the land of GitHub"
     },
     results: {
-        title: "This Pirate's favorite Black Magic is: ",
+        title: "This Pirate's favorite Black Magic be: ",
         error: "Avast! The Kraken sent yer message down to Davy Jones' Locker. Dare ye voyage again? Try, if ye dare."
     }
 };
