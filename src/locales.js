@@ -3,7 +3,7 @@ const english = {
         title: 'Favorite Language Guessing Game!'
     },
     input: {
-        label: 'Enter username, then press Enter'
+        label: 'Enter GitHub username, then press Enter'
     },
     results: {
         title: "This user's favorite language is: ",
@@ -16,7 +16,7 @@ const spanish = {
         title: 'Adivinamos El Idioma Preferido!'
     },
     input: {
-        label: 'Ingrese el nombre de usuario, y después presiona enter'
+        label: 'Ingrese el nombre de usuario de GitHub, y después presiona enter'
     },
     results: {
         title: 'El idioma preferido de este usuario es: ',
@@ -24,13 +24,27 @@ const spanish = {
     }
 };
 
+const pirate = {
+    header: {
+        title: "Arr, this here device be for guessin' a Pirate's favorite Black Magic"
+    },
+    input: {
+        label: "Enter the Pirate's codin' name from the land of GitHub"
+    },
+    results: {
+        title: "This Pirate's favorite Black Magic is: ",
+        error: "Avast! The Kraken sent yer message down to Davy Jones' Locker. Dare ye voyage again? Try, if ye dare."
+    }
+};
+
 export const availableLanguages = [
     {name: 'english', displayName: 'English 🇬🇧'},
-    {name: 'spanish', displayName: 'Español 🇪🇸'}
+    {name: 'spanish', displayName: 'Español 🇪🇸'},
+    {name: 'pirate', displayName: 'Pirate 🏴‍☠️'}
 ];
 
 export const getDefaultLocaleName = () => {
     return availableLanguages[0].name;
 };
 
-export default {english, spanish};
+export default {english, spanish, pirate};
