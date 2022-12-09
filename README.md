@@ -20,7 +20,7 @@ If the user has no repositories, or there are no valid results, an error will be
 ## Multi-language support
 In order to support multiple audiences around the world, the guessing game supports multiple spoken languages.
 
-Currently the supported languages are:
+Currently the supported spoken languages are:
  * English
  * Spanish
  * Pirate
