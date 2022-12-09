@@ -1,7 +1,11 @@
 import {isArray} from 'lodash';
 
+import {generateGithubUserReposUrl} from '../helpers/urlHelper';
+
 export const getUserRepositories = (username = '') => {
-    return fetch(`https://api.github.com/users/${username}/repos`)
+    const repoUrl = generateGithubUserReposUrl(username);
+
+    return fetch(repoUrl)
         .then((response) => response.json())
         .then((response) => {
             return response;
