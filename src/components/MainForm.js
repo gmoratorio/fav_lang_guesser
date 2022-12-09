@@ -21,12 +21,17 @@ const INITIAL_HAS_ERROR = false;
 export default function MainForm() {
     const {translate, setLocale} = useLocaleContextActions();
     const {currentLocale} = useLocaleContextState();
-    const [favoriteLanguage, setFavoriteLanguage] = useState(null);
+    const [favoriteLanguage, setFavoriteLanguage] =
+        useState(INITIAL_FAV_LANGUAGE);
     const [username, setUsername] = useState(INITIAL_USERNAME);
-    const [hasError, setHasError] = useState(false);
+    const [hasError, setHasError] = useState(INITIAL_HAS_ERROR);
 
     const onChangeInput = (e) => {
         const newUsername = e.target.value;
+
+        if (hasError || !!favoriteLanguage) {
+            resetResults();
+        }
 
         setUsername(newUsername);
     };
